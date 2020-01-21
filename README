@@ -1,5 +1,5 @@
 # DESCRIPTION
-Little nifty feature for Quicktime Player that lets you export gif from current playback position for certain duration. 
+Little nifty feature for Quicktime Player that lets you export gif from current playback position and of a certain duration. 
 Uses applescript and ffmpeg. Export options are customizable.
 
 # REQUIREMENTS 
@@ -9,4 +9,12 @@ works only for OS X / macOS with the following installed:
 - ffmpeg 
 
 # SETUP
-- save the script file in
+- download file "script.scpt" from this repository and place it in the following folder 
+"/Users/*your username*/Library/Scripts/Applications/Quicktime Player"
+
+- make sure you have ffmpeg installed. 
+If not, the simplest way is using homebrew in Terminal (brew install ffmpeg). Or google "install ffmpeg"
+
+# FFMPEG CONFIGURATION
+The script summons all variables and sends it to ffmpeg as follows:
+ffmpeg -ss $start -t $duration -i $inputFile -vf "fps=$fps, scale=$scale:flags=lanczos" -loop 0 $outputFile
